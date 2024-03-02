@@ -6,7 +6,11 @@ public class Warmup {
      * @return is the number th word of the sentence
      */
     public String wordFinder(String sentence, int number) {
-        return null;
+        String[] subStrings = sentence.split(" ");
+        if(0 < number && number <= subStrings.length)
+            return subStrings[number - 1];
+        else
+            return String.format(" Number = %d is out Of Bound", number);
     }
 
     /**
@@ -16,7 +20,28 @@ public class Warmup {
      * @return if searchForEven is true ? return the number of even numbers : return the number of odd numbers
      */
     public int oddEvenCounter(String number, boolean searchForEven) {
-        return -1;
+        int result = 0;
+        if (searchForEven)
+            for (int i = 0; i < number.length(); i++)
+                switch (number.charAt(i)) {
+                    case '0':
+                    case '2':
+                    case '4':
+                    case '6':
+                    case '8':
+                        result++;
+                }
+        else
+            for (int i = 0;i < number.length();i++)
+                switch (number.charAt(i)) {
+                    case '1':
+                    case '3':
+                    case '5':
+                    case '7':
+                    case '9':
+                        result++;
+                }
+        return result;
     }
 
     /**
@@ -25,6 +50,17 @@ public class Warmup {
      * @return The word that is first in alphabet column
      */
     public String firstWord(String wordA, String wordB) {
-        return null;
+        int length = (wordA.length() < wordB.length()) ? wordA.length() : wordB.length();
+        for (int i = 0;i < length;i++)
+        {
+            if(wordA.charAt(i) < wordB.charAt(i))
+                return wordA;
+            else if(wordA.charAt(i) > wordB.charAt(i))
+                return wordB;
+        }
+        if(wordA.length() < wordB.length())
+            return wordA;
+        else
+            return wordB;
     }
 }
